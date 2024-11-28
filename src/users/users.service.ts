@@ -35,11 +35,7 @@ export class UsersService {
 
   async findOneByEmail(email: string) {
     try {
-      return await this.userRepository.findOne({
-        where: {
-          email: email
-        }
-      })
+      return this.userRepository.findOne({where: {email}})
     } catch (error) {
       console.log(error);
     }
