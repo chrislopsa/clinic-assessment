@@ -6,6 +6,8 @@ import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { SchedulesModule } from './schedules/schedules.module';
+import { AppointmentsModule } from './appointments/appointments.module';
 
 
 @Module({
@@ -23,7 +25,7 @@ import { AuthModule } from './auth/auth.module';
         entities: [__dirname + '/**/*.entity{.ts,.js}', User],  
         synchronize: true,
       }),
-    UsersModule, AuthModule],
+    UsersModule, AuthModule, SchedulesModule, AppointmentsModule],
   controllers: [AppController],
   providers: [AppService],
 })

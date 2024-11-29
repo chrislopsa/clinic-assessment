@@ -22,7 +22,7 @@ export class UsersService {
       if(userFound){
         return new HttpException('User already exists', HttpStatus.CONFLICT)
     }
-    const newUser = this.userRepository.create(createUserDto)
+    const newUser: User = this.userRepository.create(createUserDto)
     return await this.userRepository.save(newUser)
     } catch (error) {
       console.log(error);
