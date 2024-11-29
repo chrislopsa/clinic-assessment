@@ -21,10 +21,18 @@ export class SchedulesService {
     return `This action returns all schedules`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} schedule`;
+  async findOne(id: string) {
+    return await this.schedulesRepository.findOne({where: {id}})
   }
 
+  async findSchedulesByDoctorId(doctorId: string): Promise<Schedule[]> { 
+    return this.schedulesRepository.find({ 
+      where: { 
+        doctor: { id: doctorId },
+       }, 
+       relations: ['doctor'],
+    });
+  }
   update(id: number, updateScheduleDto: UpdateScheduleDto) {
     return `This action updates a #${id} schedule`;
   }

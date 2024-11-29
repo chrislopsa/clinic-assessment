@@ -12,15 +12,15 @@ export class SchedulesController {
     return this.schedulesService.create(createScheduleDto);
   }
 
-  @Get()
-  findAll() {
-    return this.schedulesService.findAll();
+  @Get(':id')
+  findByDoctorId(@Param() id: string) {
+    return this.schedulesService.findSchedulesByDoctorId(id);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.schedulesService.findOne(+id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.schedulesService.findOne(+id);
+  // }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateScheduleDto: UpdateScheduleDto) {
